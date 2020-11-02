@@ -24,7 +24,7 @@ jobs:
           cargo install cargo-tarpaulin && \
           cargo tarpaulin --verbose --ignore-tests
 
-  without_target:
+  with_target:
     runs-on: ubuntu-latest
     name: with_target
     steps:
