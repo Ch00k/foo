@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  without_target:
+    runs-on: ubuntu-latest
+    name: without_target
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: prepare rust env
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: run tests
+        run: |
+          cargo install cargo-tarpaulin && \
+          cargo tarpaulin --verbose --ignore-tests
+
+  without_target:
+    runs-on: ubuntu-latest
+    name: with_target
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: prepare rust env
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: run tests
+        run: |
+          cargo install cargo-tarpaulin && \
+          cargo tarpaulin --test integration --verbose --ignore-tests

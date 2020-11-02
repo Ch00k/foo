@@ -1,0 +1,11 @@
+[package]
+name = "foo"
+version = "0.1.0"
+authors = ["Andrii Yurchuk <ay@mntw.re>"]
+edition = "2018"
+
+[dependencies]
+
+[[test]]
+name = "integration"
+path = "tests/test.rs"
